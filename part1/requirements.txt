@@ -1,0 +1,12 @@
+pandas
+numpy
+mysql-connector-python
+pdfplumber
+PyMuPDF
+pytesseract
+Pillow
+beautifulsoup4
+selenium
+webdriver-manager
+tqdm
+requests
