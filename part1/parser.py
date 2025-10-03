@@ -7,6 +7,7 @@ import pytesseract
 from PIL import Image
 import pdfplumber
 import mysql.connector
+from datetime import datetime
 
 
 class Patterns:
@@ -88,6 +89,22 @@ def find_api_no(text):
 
     return list(set(api_id))
 
+def normalize_date(date_str: str) -> str:
+    """
+    Normalize date string into YYYY-MM-DD format.
+    """
+    if not date_str or not date_str.strip():
+        return ""
+    try:
+        parsed = datetime.strptime(date_str.strip(), "%m/%d/%Y")
+        return parsed.strftime("%Y-%m-%d")
+    except ValueError:
+        try:
+
+            parsed = datetime.strptime(date_str.strip(), "%m/%d/%y")
+            return parsed.strftime("%Y-%m-%d")
+        except ValueError:
+            return date_str
 
 def extract_data_from_text_file(filepath):
     text = extract_text_from_pdf(filepath)
@@ -107,8 +124,12 @@ def extract_data_from_text_file(filepath):
                 results[key] = ""
                 match = re.search(pattern, text)
                 if match:
-                    results[key] = match.group(1).strip()
+                    value = match.group(1).strip()
+                    if key == "date_simulated":
+                        value = normalize_date(value)
+                    results[key] = value
                     keys_encountered.add(key)
+
 
     if results.get("job_id", "") == "":
         results["job_id"] = results["well_file_no"]
