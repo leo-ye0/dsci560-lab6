@@ -1,6 +1,5 @@
 import os
 from io import BytesIO
-import fitz
 import pdfplumber
 
 def process_pdf_local(pdf_path, out_dir="text_files"):
@@ -25,16 +24,7 @@ def process_pdf_local(pdf_path, out_dir="text_files"):
         except Exception as e:
             print(f"[pdfplumber failed: {filename}] {e}")
 
-        # fitz
-        try:
-            with fitz.open(stream=BytesIO(pdf_bytes), filetype="pdf") as pdf:
-                for page_number in range(pdf.page_count):
-                    page = pdf.load_page(page_number)
-                    t = page.get_text("text")
-                    if t:
-                        text_all += t + "\n"
-        except Exception as e:
-            print(f"[fitz failed: {filename}] {e}")
+
 
         with open(filepath, "w", encoding="utf-8") as f:
             f.write(text_all.strip())
