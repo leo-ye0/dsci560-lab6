@@ -6,7 +6,6 @@ import fitz
 import pytesseract
 from PIL import Image
 import pdfplumber
-import mysql.connector
 from datetime import datetime
 
 
@@ -149,143 +148,10 @@ def process_folder(folder_path, output_csv="wells.csv"):
     df = pd.DataFrame(all_records)
     df.to_csv(output_csv, index=False)
     print(f"Processed {len(all_records)} files and saved to {output_csv}")
-    
-    # upload to SQL
-    upload_to_sql(df)
-def upload_to_sql(df):
-    try:
-        conn = mysql.connector.connect(
-            host="localhost",
-            user="admin",
-            password="password",
-            database="wells_db"
-        )
-        cursor = conn.cursor()
-        
-        # Create table if not exists
-        create_table_query = """
-        CREATE TABLE IF NOT EXISTS wells_data (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            filename VARCHAR(255),
-            api_no TEXT,
-            well_file_no INT,
-            operator TEXT,
-            well_name TEXT,
-            job_id VARCHAR(50),
-            job_type TEXT,
-            county TEXT,
-            latitude TEXT,
-            longitude TEXT,
-            datum TEXT,
-            date_simulated DATE,
-            formation TEXT,
-            psi INT NULL,
-            lbs INT NULL,
-            type_treatment TEXT,
-            volume TEXT,
-            max_treatment_rate DECIMAL(10,2)
-        )
-        """
-        cursor.execute(create_table_query)
-        
-        insert_query = """
-        INSERT INTO wells_data (
-            filename, api_no, well_file_no, operator, well_name, job_id, job_type,
-            county, latitude, longitude, datum, date_simulated, formation,
-            psi, lbs, type_treatment, volume, max_treatment_rate
-        )
-        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
-        """
-        
-        for _, row in df.iterrows():
-            # Convert empty strings to None for integer fields
-            psi_val = row.get("psi", "")
-            psi_val = int(psi_val) if psi_val and str(psi_val).strip().isdigit() else None
-            
-            lbs_val = row.get("lbs", "")
-            lbs_val = int(lbs_val) if lbs_val and str(lbs_val).strip().isdigit() else None
-            
-            rate_val = row.get("max_treatment_rate", "")
-            rate_val = float(rate_val) if rate_val and str(rate_val).strip().replace('.','').isdigit() else None
-            
-            date_val = row.get("date_simulated", "")
-            date_val = date_val if date_val and date_val.strip() else None
-            
-            cursor.execute(insert_query, (
-                row.get("filename", ""),
-                row.get("api_no", ""),
-                row.get("well_file_no", None),
-                row.get("operator", ""),
-                row.get("well_name", ""),
-                row.get("job_id", ""),
-                row.get("job_type", ""),
-                row.get("county", ""),
-                row.get("latitude", ""),
-                row.get("longitude", ""),
-                row.get("datum", ""),
-                date_val,
-                row.get("formation", ""),
-                psi_val,
-                lbs_val,
-                row.get("type_treatment", ""),
-                row.get("volume", ""),
-                rate_val
-            ))
-        
-        conn.commit()
-        print(f"Uploaded {len(df)} records to SQL database")
-    except Exception as e:
-        print(f"Unable to upload to SQL: {e}")
-    finally:
-        if conn:
-            cursor.close()
-            conn.close()
 
-def upload_stimulated_data(df):
-    try:
-        conn = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="password",  
-            database="wells_db"
-        )
-        cursor = conn.cursor()
 
-        insert_query = """
-        INSERT INTO stimulated_data (
-            api_no, date_simulated, formation, top_ft, bottom_ft, stimulation_stages,
-            volume, volume_units, type_treatment, lbs_proppant,
-            maximum_treatment_pressure_psi, maximum_treatment_rate_bbls_per_min, details
-        )
-        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
-        """
-
-        for _, row in df.iterrows():
-            cursor.execute(insert_query, (
-                row.get("api_no", ""),
-                row.get("date_simulated", None),
-                row.get("formation", ""),
-                row.get("top_ft", None),
-                row.get("bottom_ft", None),
-                row.get("stimulation_stages", None),
-                row.get("volume", None),
-                row.get("volume_units", ""),
-                row.get("type_treatment", ""),
-                row.get("lbs_proppant", None),
-                row.get("maximum_treatment_pressure", None),
-                row.get("maximum_treatment_rate", None),
-                row.get("details", "")
-            ))
-
-        conn.commit()
-        print(f"uploaded {len(df)} stimulated_data to SQL")
-    except Exception as e:
-        print(f"unable to upload: {e}")
-    finally:
-        if conn:
-            cursor.close()
-            conn.close()
 
 
 if __name__ == "__main__":
-    process_folder("../data/text_files", "stimulated_data.csv")
+    df = process_folder("../data/text_files", "extracted_data.csv")
+    print(f"Extracted data saved to extracted_data.csv")

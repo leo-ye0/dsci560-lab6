@@ -1,42 +1,41 @@
 CREATE DATABASE IF NOT EXISTS wells_db;
 USE wells_db;
 
--- Drop existing tables
+-- Drop existing tables (handle foreign key constraints)
+SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS stimulated_data;
 DROP TABLE IF EXISTS wells;
+DROP TABLE IF EXISTS stimulations;
+SET FOREIGN_KEY_CHECKS = 1;
 
 -- wells
 CREATE TABLE wells (
-    api_no VARCHAR(20) PRIMARY KEY,
-    file_name VARCHAR(100),
-    well_file_no INT,
-    operator VARCHAR(255),
-    well_name VARCHAR(255),
-    job_id VARCHAR(50),
-    job_type VARCHAR(255),
-    county VARCHAR(255),
-    latitude VARCHAR(50),
-    longitude VARCHAR(50),
-    datum VARCHAR(50),
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    api_no VARCHAR(50),
     well_status VARCHAR(100),
     well_type VARCHAR(100),
-    closest_city VARCHAR(100)
+    closest_city VARCHAR(255),
+    county VARCHAR(255),
+    lat_long VARCHAR(100),
+    oil_prod DECIMAL(10,2),
+    gas_prod DECIMAL(10,2)
 );
 
--- stimulated_data
+-- stimulated_data 
 CREATE TABLE stimulated_data (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    api_no VARCHAR(20),
-    date_simulated DATE,
-    formation VARCHAR(255),
+    file_id VARCHAR(50),
+    api_no VARCHAR(50),
+    date_stimulated DATE,
+    stimulated_formation TEXT,
     top_ft INT,
     bottom_ft INT,
     stimulation_stages INT,
     volume BIGINT,
     volume_units VARCHAR(50),
-    type_treatment VARCHAR(100),
+    type_treatment TEXT,
     lbs_proppant BIGINT,
     maximum_treatment_pressure_psi INT,
-    maximum_treatment_rate_bbls_per_min DECIMAL(10,2),
-    details TEXT
+    maximum_treatment_rate_bbls_per_min DECIMAL(10,2)
 );

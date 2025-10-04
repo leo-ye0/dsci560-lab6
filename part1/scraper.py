@@ -5,7 +5,8 @@ from bs4 import BeautifulSoup
 def scrape(df):
     api_nos = df.api_no.tolist()
     api_dict = {'name':[], 'api_no':[], 'well_status':[], 'well_type':[], 'closest_city':[], 'county':[], 'lat_long':[]}
-    oil_gas_prod = []
+    oil_prod = []
+    gas_prod = []
 
     for api_no in api_nos:
         url = f'https://www.drillingedge.com/search?type=wells&operator_name=&well_name=&api_no={api_no}'
@@ -35,22 +36,25 @@ def scrape(df):
             api_dict[key].append(val)
 
         spans = api_soup.find_all('span', class_='dropcap')
-        oil_gas_list = []
+        production_values = []
         
         for span in spans:
             elem = span.text.strip().split(' ')
             
             try:
                 if len(elem) == 1:
-                    oil_gas_list.append(float(elem[0]))
+                    production_values.append(float(elem[0]))
                 else:
-                    oil_gas_list.append(float(elem[0]) * 1000)
+                    production_values.append(float(elem[0]) * 1000)
             except:
-                oil_gas_prod.append(None)
+                production_values.append(0)
 
-        oil_gas_prod.append(sum(oil_gas_list))
+        # Assume first value is oil, second is gas (adjust based on actual data structure)
+        oil_prod.append(production_values[0] if len(production_values) > 0 else 0)
+        gas_prod.append(production_values[1] if len(production_values) > 1 else 0)
     
-    api_dict['oil_gas_prod'] = oil_gas_prod
+    api_dict['oil_prod'] = oil_prod
+    api_dict['gas_prod'] = gas_prod
 
     api_df = pd.DataFrame(api_dict)
     

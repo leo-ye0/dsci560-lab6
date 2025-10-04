@@ -47,6 +47,11 @@ def process_pdf_local(pdf_path, out_dir="text_files"):
 
 
 def process_all_pdfs_local(pdf_dir="pdfs", out_dir="text_files"):
+    if not os.path.exists(pdf_dir):
+        print(f"Directory '{pdf_dir}' not found. Please download PDFs first using:")
+        print(f"gdown --folder https://drive.google.com/drive/u/0/folders/12g-bhOylyaMoLF5djocnAeZHBx-gsxgY -O {pdf_dir}/ --remaining-ok")
+        return
+    
     pdf_files = [os.path.join(pdf_dir, f) for f in os.listdir(pdf_dir) if f.endswith(".pdf")]
 
     print(f" {len(pdf_files)} PDF files")
