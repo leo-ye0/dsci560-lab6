@@ -1,77 +1,77 @@
-name,api_no,well_status,well_type,closest_city,county,lat_long,oil_gas_prod
-Yukon 5301 41-12T,33-053-03911,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.082914, -103.622634",2000.0
-Innoko 5301 43-12T,33-053-03937,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.082730, -103.613628",273.0
-Magnum 3-36-25H,33-053-04069,Inactive,Oil & Gas,"McKenzie County, ND",Williston,"48.024944, -103.605166",0.0
-Larry 5301 44-12B,33-053-04071,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.082612, -103.607281",2366.0
-Ash Federal 5300 11-18T,33-053-04211,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.079672, -103.602545",400.0
-Colville 5301 44-12T,33-053-04981,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.082623, -103.607895",1102.0
-Lewis Federal 5300 21-31 6B,33-053-05845,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.031718, -103.603085",1704.0
-Lewis Federal 5300 21-31 5B,33-053-05849,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.031808, -103.603086",4200.0
-Wade Federal 5300 31-30 11T,33-053-05906,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.044162, -103.602670",1998.0
-Chalmers 5301 44-24 2TR,33-053-05924,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.055866, -103.604903",3184.0
-Chalmers 5301 44-24 3BR,33-053-06010,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.055776, -103.604903",5631.0
-Chalmers 5301 44-24 4T2R,33-053-06011,Abandoned,Oil & Gas,"McKenzie County, ND",Williston,"48.055641, -103.604904",0.0
-Chalmers Wade Federal 5301 44-24 12TXR,33-053-06012,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.055551, -103.604905",1502.0
-Chalmers 5300 21-19 5T,33-053-06018,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.061796, -103.602522",834.0
-Chalmers 5300 21-19 6B,33-053-06019,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.061706, -103.602522",1118.0
-Chalmers 5300 21-19 8T,33-053-06021,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.061525, -103.602523",521.0
-Chalmers 5300 21-19 10T,33-053-06022,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.061344, -103.602525",2611.0
-Chalmers 5300 21-19 9B,33-053-06023,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.061434, -103.602524",737.0
-Chalmers 5300 21-19 11B,33-053-06024,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.061254, -103.602525",1707.0
-Wrrmu 4-28,33-053-00605,Plugged and Abandoned,Oil & Gas,"McKenzie County, ND",Medora,"47.346236, -103.554430",0.0
-Kline Federal 5300 31-18 7T,33-053-06056,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.074452, -103.602935",1880.0
-Kline Federal 5300 31-18 6B,33-053-06057,Abandoned,Oil & Gas,"McKenzie County, ND",Williston,"48.074362, -103.602934",0.0
-Wade Federal 5300 21-30 12T,33-053-06129,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.048736, -103.602904",1233.0
-Wade Federal 5300 21-30 13B,33-053-06131,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.048917, -103.602900",2959.0
-Kline Federal 5300 11-18 5B,33-053-06223,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.078987, -103.602835",3481.0
-Kline Federal 5300 11-18 3T,33-053-06225,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.079069, -103.602783",2134.0
-Kline Federal 5300 11-18 2B,33-053-06243,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.079234, -103.602670",3277.0
-Lewis Federal 5300 11-31 3B,33-053-06548,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.035835, -103.603111",3730.0
-Lewis Federal 5300 11-31 2B,33-053-06549,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.035926, -103.603100",5000.0
-Kline Federal 5300 31-18 15T,33-053-06755,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.074633, -103.602938",2330.0
-Lewis Federal 5300 11-31 4BR,33-053-08946,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.035654, -103.603130",2600.0
-Tallahassee 3-16H,33-053-04853,Inactive,Oil & Gas,"McKenzie County, ND",Williston,"48.075131, -103.669967",0.0
-Tallahassee 2-16H,33-053-04854,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.075235, -103.669874",2262.0
-Columbus Federal 2-16H,33-053-04855,Inactive,Oil & Gas,"McKenzie County, ND",Williston,"48.075342, -103.669780",0.0
-Columbus Federal 3-16H,33-053-04856,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.075449, -103.669687",1527.0
-Kline Federal 5300 41-18 10B,33-053-06026,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.068997, -103.602868",633.0
-Kline Federal 5300 41-18 13T2X,33-053-06028,Plugged and Abandoned,Oil & Gas,"McKenzie County, ND",Williston,"48.068726, -103.602865",0.0
-Kline Federal 5300 41-18 14BX,33-053-06029,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.068635, -103.602863",4744.0
-Kline Federal 5300 41-18 12TX,33-053-06030,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.068816, -103.602866",2694.0
-Wade Federal 5300 41-30 4T,33-053-05943,Abandoned,Oil & Gas,"McKenzie County, ND",Williston,"48.042266, -103.603158",0.0
-Wade Federal 5300 41-30 6B,33-053-05954,Inactive,Oil & Gas,"McKenzie County, ND",Williston,"48.041298, -103.603014",0.0
-Wade Federal 5300 31-30 2B,33-053-05995,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.042447, -103.603155",2470.0
-Wade Federal 5300 41-30 7T,33-053-05998,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.041208, -103.603016",1572.0
-Wade Federal 5300 41-30 9B,33-053-06051,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.041027, -103.603020",5242.0
-Gramma Federal 5300 41-31 12B,33-053-06231,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.026154, -103.602783",5200.0
-Gramma Federal 5300 41-31 13T,33-053-06232,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.026335, -103.602785",1667.0
-Atlanta 14-6H,33-105-02719,Active,Oil & Gas,"Williams County, ND",Williston,"48.109434, -103.727494",1120.0
-Atlanta 13-6H,33-105-02720,Active,Oil & Gas,"Williams County, ND",Williston,"48.109439, -103.727678",911.0
-Atlanta 12-6H,33-105-02721,Active,Oil & Gas,"Williams County, ND",Williston,"48.109444, -103.727862",871.0
-Atlanta 11-6H,33-105-02722,Active,Oil & Gas,"Williams County, ND",Williston,"48.109450, -103.728047",1412.0
-Atlanta Federal 10-6H,33-105-02723,Active,Oil & Gas,"Williams County, ND",Williston,"48.109455, -103.728231",928.0
-Atlanta Federal 9-6H,33-105-02724,Active,Oil & Gas,"Williams County, ND",Williston,"48.109460, -103.728415",1275.0
-Atlanta Federal 7-6H,33-105-02726,Active,Oil & Gas,"Williams County, ND",Williston,"48.109499, -103.729788",1294.0
-Atlanta Federal 6-6H,33-105-02727,Active,Oil & Gas,"Williams County, ND",Williston,"48.109504, -103.729972",734.0
-Atlanta Federal 5-6H,33-105-02728,Active,Oil & Gas,"Williams County, ND",Williston,"48.109510, -103.730156",857.0
-Atlanta 4-6H,33-105-02729,Active,Oil & Gas,"Williams County, ND",Williston,"48.109535, -103.730975",876.0
-Atlanta 3-6H,33-105-02730,Active,Oil & Gas,"Williams County, ND",Williston,"48.109540, -103.731160",1028.0
-Atlanta 2-6H,33-105-02731,Active,Oil & Gas,"Williams County, ND",Williston,"48.109546, -103.731344",562.0
-Atlanta 1-6H,33-105-02732,Active,Oil & Gas,"Williams County, ND",Williston,"48.109552, -103.731528",426.0
-Lewis And Clark 2-4H,33-053-02556,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.104997, -103.670242",1242.0
-Wade Federal 5300 21-30H,33-053-03413,Abandoned,Oil & Gas,"McKenzie County, ND",Williston,"48.047147, -103.603100",0.0
-Kline Federal 5300 41-18 9T,33-053-06025,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.069087, -103.602869",1827.0
-Corps Of Engineers 31-10,33-053-02148,Plugged and Abandoned,Oil & Gas,"McKenzie County, ND",Williston,"48.094925, -103.656644",322.0
-Jefferies 5301 43-12B,33-053-03936,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.082743, -103.614283",2871.0
-Bray 5301 43-12H,33-053-03609,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.082698, -103.611895",1583.0
-Basic Game And Fish 34-3,33-053-02102,Inactive,Oil & Gas,"McKenzie County, ND",Williston,"48.097836, -103.645192",0.0
-Buck Shot SWD 5300 31-31,33-053-90244,Inactive,Salt Water Disposal,"McKenzie County, ND",Williston,"48.029100, -103.599403",0.0
-Dahl Federal 2-15H,33-053-03846,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.080324, -103.655498",5000.0
-Magnum 2-36-25H,33-053-03944,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.024944, -103.605063",940.0
-Atlanta #1 SWD,33-105-90258,Active,Salt Water Disposal,"Williams County, ND",Williston,"48.110204, -103.731807",0.0
-Chalmers 5300 31-19H,33-053-03472,Abandoned,Oil & Gas,"McKenzie County, ND",Williston,"48.057438, -103.602355",0.0
-Atlanta Federal 8-6H,33-105-02725,Active,Oil & Gas,"Williams County, ND",Williston,"48.109493, -103.729603",466.0
-Foley Federal 5301 43-12H,33-053-03608,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.082690, -103.611486",3400.0
-Carson SWD 5301 12-24,33-053-90329,Inactive,Salt Water Disposal,"McKenzie County, ND",Williston,"48.066082, -103.615308",0.0
-Dahl Federal 15-11H,33-053-03703,Inactive,Oil & Gas,"McKenzie County, ND",Williston,"48.082328, -103.635729",0.0
-Columbus Federal 1-16H,33-053-04852,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.074859, -103.670170",4000.0
+name,api_no,well_status,well_type,closest_city,county,lat_long,oil_prod,gas_prod
+Yukon 5301 41-12T,33-053-03911,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.082914, -103.622634",1000.0,1000.0
+Innoko 5301 43-12T,33-053-03937,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.082730, -103.613628",94.0,179.0
+Magnum 3-36-25H,33-053-04069,Inactive,Oil & Gas,"McKenzie County, ND",Williston,"48.024944, -103.605166",0.0,0.0
+Larry 5301 44-12B,33-053-04071,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.082612, -103.607281",566.0,1800.0
+Ash Federal 5300 11-18T,33-053-04211,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.079672, -103.602545",153.0,247.0
+Colville 5301 44-12T,33-053-04981,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.082623, -103.607895",363.0,739.0
+Lewis Federal 5300 21-31 6B,33-053-05845,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.031718, -103.603085",504.0,1200.0
+Lewis Federal 5300 21-31 5B,33-053-05849,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.031808, -103.603086",1100.0,3100.0
+Wade Federal 5300 31-30 11T,33-053-05906,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.044162, -103.602670",198.0,1800.0
+Chalmers 5301 44-24 2TR,33-053-05924,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.055866, -103.604903",284.0,2900.0
+Chalmers 5301 44-24 3BR,33-053-06010,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.055776, -103.604903",531.0,5100.0
+Chalmers 5301 44-24 4T2R,33-053-06011,Abandoned,Oil & Gas,"McKenzie County, ND",Williston,"48.055641, -103.604904",0.0,0.0
+Chalmers Wade Federal 5301 44-24 12TXR,33-053-06012,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.055551, -103.604905",671.0,831.0
+Chalmers 5300 21-19 5T,33-053-06018,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.061796, -103.602522",163.0,671.0
+Chalmers 5300 21-19 6B,33-053-06019,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.061706, -103.602522",262.0,856.0
+Chalmers 5300 21-19 8T,33-053-06021,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.061525, -103.602523",249.0,272.0
+Chalmers 5300 21-19 10T,33-053-06022,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.061344, -103.602525",111.0,2500.0
+Chalmers 5300 21-19 9B,33-053-06023,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.061434, -103.602524",186.0,551.0
+Chalmers 5300 21-19 11B,33-053-06024,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.061254, -103.602525",207.0,1500.0
+Wrrmu 4-28,33-053-00605,Plugged and Abandoned,Oil & Gas,"McKenzie County, ND",Medora,"47.346236, -103.554430",0.0,0.0
+Kline Federal 5300 31-18 7T,33-053-06056,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.074452, -103.602935",180.0,1700.0
+Kline Federal 5300 31-18 6B,33-053-06057,Abandoned,Oil & Gas,"McKenzie County, ND",Williston,"48.074362, -103.602934",0.0,0.0
+Wade Federal 5300 21-30 12T,33-053-06129,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.048736, -103.602904",336.0,897.0
+Wade Federal 5300 21-30 13B,33-053-06131,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.048917, -103.602900",459.0,2500.0
+Kline Federal 5300 11-18 5B,33-053-06223,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.078987, -103.602835",381.0,3100.0
+Kline Federal 5300 11-18 3T,33-053-06225,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.079069, -103.602783",234.0,1900.0
+Kline Federal 5300 11-18 2B,33-053-06243,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.079234, -103.602670",277.0,3000.0
+Lewis Federal 5300 11-31 3B,33-053-06548,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.035835, -103.603111",730.0,3000.0
+Lewis Federal 5300 11-31 2B,33-053-06549,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.035926, -103.603100",1000.0,4000.0
+Kline Federal 5300 31-18 15T,33-053-06755,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.074633, -103.602938",930.0,1400.0
+Lewis Federal 5300 11-31 4BR,33-053-08946,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.035654, -103.603130",1100.0,1500.0
+Tallahassee 3-16H,33-053-04853,Inactive,Oil & Gas,"McKenzie County, ND",Williston,"48.075131, -103.669967",0.0,0.0
+Tallahassee 2-16H,33-053-04854,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.075235, -103.669874",662.0,1600.0
+Columbus Federal 2-16H,33-053-04855,Inactive,Oil & Gas,"McKenzie County, ND",Williston,"48.075342, -103.669780",0.0,0.0
+Columbus Federal 3-16H,33-053-04856,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.075449, -103.669687",731.0,796.0
+Kline Federal 5300 41-18 10B,33-053-06026,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.068997, -103.602868",203.0,430.0
+Kline Federal 5300 41-18 13T2X,33-053-06028,Plugged and Abandoned,Oil & Gas,"McKenzie County, ND",Williston,"48.068726, -103.602865",0.0,0.0
+Kline Federal 5300 41-18 14BX,33-053-06029,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.068635, -103.602863",844.0,3900.0
+Kline Federal 5300 41-18 12TX,33-053-06030,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.068816, -103.602866",394.0,2300.0
+Wade Federal 5300 41-30 4T,33-053-05943,Abandoned,Oil & Gas,"McKenzie County, ND",Williston,"48.042266, -103.603158",0.0,0.0
+Wade Federal 5300 41-30 6B,33-053-05954,Inactive,Oil & Gas,"McKenzie County, ND",Williston,"48.041298, -103.603014",0.0,0.0
+Wade Federal 5300 31-30 2B,33-053-05995,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.042447, -103.603155",270.0,2200.0
+Wade Federal 5300 41-30 7T,33-053-05998,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.041208, -103.603016",172.0,1400.0
+Wade Federal 5300 41-30 9B,33-053-06051,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.041027, -103.603020",642.0,4600.0
+Gramma Federal 5300 41-31 12B,33-053-06231,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.026154, -103.602783",1000.0,4200.0
+Gramma Federal 5300 41-31 13T,33-053-06232,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.026335, -103.602785",267.0,1400.0
+Atlanta 14-6H,33-105-02719,Active,Oil & Gas,"Williams County, ND",Williston,"48.109434, -103.727494",436.0,684.0
+Atlanta 13-6H,33-105-02720,Active,Oil & Gas,"Williams County, ND",Williston,"48.109439, -103.727678",340.0,571.0
+Atlanta 12-6H,33-105-02721,Active,Oil & Gas,"Williams County, ND",Williston,"48.109444, -103.727862",322.0,549.0
+Atlanta 11-6H,33-105-02722,Active,Oil & Gas,"Williams County, ND",Williston,"48.109450, -103.728047",571.0,841.0
+Atlanta Federal 10-6H,33-105-02723,Active,Oil & Gas,"Williams County, ND",Williston,"48.109455, -103.728231",347.0,581.0
+Atlanta Federal 9-6H,33-105-02724,Active,Oil & Gas,"Williams County, ND",Williston,"48.109460, -103.728415",508.0,767.0
+Atlanta Federal 7-6H,33-105-02726,Active,Oil & Gas,"Williams County, ND",Williston,"48.109499, -103.729788",525.0,769.0
+Atlanta Federal 6-6H,33-105-02727,Active,Oil & Gas,"Williams County, ND",Williston,"48.109504, -103.729972",257.0,477.0
+Atlanta Federal 5-6H,33-105-02728,Active,Oil & Gas,"Williams County, ND",Williston,"48.109510, -103.730156",314.0,543.0
+Atlanta 4-6H,33-105-02729,Active,Oil & Gas,"Williams County, ND",Williston,"48.109535, -103.730975",319.0,557.0
+Atlanta 3-6H,33-105-02730,Active,Oil & Gas,"Williams County, ND",Williston,"48.109540, -103.731160",389.0,639.0
+Atlanta 2-6H,33-105-02731,Active,Oil & Gas,"Williams County, ND",Williston,"48.109546, -103.731344",171.0,391.0
+Atlanta 1-6H,33-105-02732,Active,Oil & Gas,"Williams County, ND",Williston,"48.109552, -103.731528",111.0,315.0
+Lewis And Clark 2-4H,33-053-02556,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.104997, -103.670242",621.0,621.0
+Wade Federal 5300 21-30H,33-053-03413,Abandoned,Oil & Gas,"McKenzie County, ND",Williston,"48.047147, -103.603100",0.0,0.0
+Kline Federal 5300 41-18 9T,33-053-06025,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.069087, -103.602869",227.0,1600.0
+Corps Of Engineers 31-10,33-053-02148,Plugged and Abandoned,Oil & Gas,"McKenzie County, ND",Williston,"48.094925, -103.656644",161.0,161.0
+Jefferies 5301 43-12B,33-053-03936,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.082743, -103.614283",771.0,2100.0
+Bray 5301 43-12H,33-053-03609,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.082698, -103.611895",604.0,979.0
+Basic Game And Fish 34-3,33-053-02102,Inactive,Oil & Gas,"McKenzie County, ND",Williston,"48.097836, -103.645192",0.0,0.0
+Buck Shot SWD 5300 31-31,33-053-90244,Inactive,Salt Water Disposal,"McKenzie County, ND",Williston,"48.029100, -103.599403",0.0,0.0
+Dahl Federal 2-15H,33-053-03846,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.080324, -103.655498",1500.0,3500.0
+Magnum 2-36-25H,33-053-03944,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.024944, -103.605063",436.0,504.0
+Atlanta #1 SWD,33-105-90258,Active,Salt Water Disposal,"Williams County, ND",Williston,"48.110204, -103.731807",0.0,0.0
+Chalmers 5300 31-19H,33-053-03472,Abandoned,Oil & Gas,"McKenzie County, ND",Williston,"48.057438, -103.602355",0.0,0.0
+Atlanta Federal 8-6H,33-105-02725,Active,Oil & Gas,"Williams County, ND",Williston,"48.109493, -103.729603",133.0,333.0
+Foley Federal 5301 43-12H,33-053-03608,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.082690, -103.611486",1200.0,2200.0
+Carson SWD 5301 12-24,33-053-90329,Inactive,Salt Water Disposal,"McKenzie County, ND",Williston,"48.066082, -103.615308",0.0,0.0
+Dahl Federal 15-11H,33-053-03703,Inactive,Oil & Gas,"McKenzie County, ND",Williston,"48.082328, -103.635729",0.0,0.0
+Columbus Federal 1-16H,33-053-04852,Active,Oil & Gas,"McKenzie County, ND",Williston,"48.074859, -103.670170",1600.0,2400.0

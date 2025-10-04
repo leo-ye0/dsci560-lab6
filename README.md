@@ -1,90 +1,152 @@
-# DSCI 560 Lab 6
+# DSCI 560 Lab 6 - Well Data Processing System
 
-## Part 1
-A complete pipeline that extracts **stimulation data** from PDF files, applies OCR for scanned reports, and stores the results in a MySQL database.
+## Overview
+A comprehensive system for processing oil and gas well data from PDFs and text files, with web scraping capabilities and MySQL database integration.
+
+## Project Structure
+```
+dsci560-lab6/
+├── part1/
+│   ├── parser.py           # Text extraction from PDFs/text files
+│   ├── scraper.py          # Web scraping for well production data
+│   ├── pdf_to_text.py      # PDF to text conversion using PyMuPDF + OCR
+│   ├── upload_csv.py       # CSV to MySQL database upload
+│   ├── setup_db.py         # Database setup script
+│   └── database.sql        # Database schema
+└── data/
+    ├── text_files/         # Extracted text files
+    ├── scraped_data.csv    # Scraped well information
+    └── stimulated_data.csv # Well stimulation data
+```
 
 ## Features
 
-- **PDF Parsing**: Extracts text from structured PDF reports using `pdfplumber` and `PyMuPDF`
-- **OCR Fallback**: Uses `pytesseract` to process scanned PDFs with no embedded text
-- **Pattern Matching**: Regex-based extraction of API number, operator, well name, county, etc.
-- **Stimulation Data Extraction**: Parses formation, date, top/bottom depth, stages, volume, pressure, and treatment type
-- **Database Storage**: MySQL integration with separate tables for wells and stimulation data
+### 1. PDF/Text Processing (`parser.py`)
+- Extracts well data from text files
+- Supports multiple text layouts and formats
+- Handles Figure 1 (Well Data) and Figure 2 (Stimulation Data)
+- Outputs structured CSV data
+
+### 2. PDF to Text Conversion (`pdf_to_text.py`)
+- Uses PyMuPDF (fitz) for efficient PDF text extraction
+- Falls back to OCR using Pytesseract for image-based PDFs
+- Batch processes multiple PDFs
+
+### 3. Web Scraping (`scraper.py`)
+- Scrapes well production data from drillingedge.com
+- Separates oil and gas production values
+- Extracts well status, type, location, and coordinates
+
+### 4. Database Integration
+- MySQL database with two main tables:
+  - `wells`: Well information and production data
+  - `stimulated_data`: Well stimulation details
+- Automated table creation and data upload
 
 ## Database Schema
 
-### `wells` and `stimulated_data`
+### Wells Table
 ```sql
 CREATE TABLE wells (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    file_name VARCHAR(100),
-    api_no VARCHAR(20),
-    well_file_no INT,
-    operator VARCHAR(255),
-    well_name VARCHAR(255),
-    job_id VARCHAR(50),
-    job_type VARCHAR(255),
-    county VARCHAR(255),
-    latitude VARCHAR(50),
-    longitude VARCHAR(50),
-    datum VARCHAR(50),
+    name VARCHAR(255),
+    api_no VARCHAR(50),
     well_status VARCHAR(100),
     well_type VARCHAR(100),
-    closest_city VARCHAR(100)
+    closest_city VARCHAR(255),
+    county VARCHAR(255),
+    lat_long VARCHAR(100),
+    oil_prod DECIMAL(10,2),
+    gas_prod DECIMAL(10,2)
 );
+```
 
+### Stimulated Data Table
+```sql
 CREATE TABLE stimulated_data (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    api_no VARCHAR(20),
-    date_simulated DATE,
-    formation VARCHAR(255),
+    file_id VARCHAR(50),
+    api_no VARCHAR(50),
+    date_stimulated DATE,
+    stimulated_formation TEXT,
     top_ft INT,
     bottom_ft INT,
     stimulation_stages INT,
     volume BIGINT,
     volume_units VARCHAR(50),
-    type_treatment VARCHAR(100),
+    type_treatment TEXT,
     lbs_proppant BIGINT,
     maximum_treatment_pressure_psi INT,
     maximum_treatment_rate_bbls_per_min DECIMAL(10,2)
 );
 ```
-## Setup
-1. **Install Dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-2. **Install Tesseract OCR**
-   ```bash
-   sudo apt install tesseract-ocr
-   ```
-
-3. **Setup Database**
-   ```bash
-   python setup_db.py
-   ```
 
 ## Usage
 
-### Turn PDFs to text files
+### 1. Setup Database
+```bash
+cd part1
+python setup_db.py
+```
+
+### 2. Convert PDFs to Text (if needed)
 ```bash
 python pdf_to_text.py
 ```
-- Scans pdfs/ folder
-- Outputs text files for every pdf
 
-### Scraping from text files
+### 3. Extract Data from Text Files
 ```bash
 python parser.py
 ```
-- find patterns in text files
-- output stimulated data into csv file and upload to SQL database
 
-## Files
+### 4. Scrape Well Production Data
+```bash
+python scraper.py
+```
 
-- `parser.py` - Extracts text, applies OCR, and generates CSV files
-- `database.sql` - Schema for wells and stimulated_data tables
-- `setup_database.py` - Initializes MySQL database and tables
-- `database_setup.sql` - MySQL schema
-- `requirements.txt` - Python dependencies
+### 5. Upload Data to Database
+```bash
+python upload_csv.py
+```
+
+## Dependencies
+```
+pandas
+mysql-connector-python
+requests
+beautifulsoup4
+PyMuPDF (fitz)
+pytesseract
+Pillow
+pdfplumber
+```
+
+## Data Sources
+- **Text Files**: Well reports and stimulation data
+- **Web Scraping**: drillingedge.com for production data
+- **Output**: CSV files and MySQL database
+
+## Key Data Fields
+
+### Well Information (Figure 1)
+- API#, Longitude, Latitude
+- Well Name & Number, Address/Location
+- Operator, Job Type, County, Datum
+
+### Stimulation Data (Figure 2)
+- Date Stimulated, Formation, Top/Bottom Ft
+- Stimulation Stages, Volume, Type Treatment
+- Lbs Proppant, Max Pressure/Rate
+- Proppant breakdown details
+
+### Production Data (Scraped)
+- Oil production (barrels)
+- Gas production (MCF)
+- Well status and type
+- Geographic coordinates
+
+## Notes
+- Handles multiple text file layouts automatically
+- Separates oil and gas production for better analysis
+- Includes data validation and error handling
+- Supports batch processing of multiple files
