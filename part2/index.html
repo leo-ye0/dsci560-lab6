@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wells Data Visualization</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v8.2.0/ol.css" type="text/css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .map-container {
+            height: 600px;
+            position: relative;
+        }
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+        .popup {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            padding: 15px;
+            min-width: 300px;
+            max-width: 400px;
+        }
+        .popup h3 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+        .popup-section {
+            margin-bottom: 15px;
+        }
+        .popup-section h4 {
+            margin: 0 0 8px 0;
+            color: #34495e;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        .popup-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+        .popup-label {
+            font-weight: bold;
+            color: #555;
+        }
+        .popup-value {
+            color: #333;
+        }
+        .status-active { color: #27ae60; }
+        .status-inactive { color: #e74c3c; }
+        .status-abandoned { color: #95a5a6; }
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Oil & Gas Wells Data Visualization</h1>
+            <p>Group jjxxyy</p>
+        </div>
+        <div class="loading" id="loading">Loading wells data...</div>
+        <div class="map-container" id="mapContainer" style="display: none;">
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/ol@v8.2.0/dist/ol.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

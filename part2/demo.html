@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wells Data Visualization - Demo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v8.2.0/ol.css" type="text/css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .demo-notice {
+            background-color: #f39c12;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .map-container {
+            height: 600px;
+            position: relative;
+        }
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+        .popup {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            padding: 15px;
+            min-width: 300px;
+            max-width: 400px;
+        }
+        .popup h3 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+        .popup-section {
+            margin-bottom: 15px;
+        }
+        .popup-section h4 {
+            margin: 0 0 8px 0;
+            color: #34495e;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        .popup-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+        .popup-label {
+            font-weight: bold;
+            color: #555;
+        }
+        .popup-value {
+            color: #333;
+        }
+        .status-active { color: #27ae60; }
+        .status-inactive { color: #e74c3c; }
+        .status-abandoned { color: #95a5a6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Oil & Gas Wells Data Visualization - Demo</h1>
+            <p>Group jjxxyy</p>
+        </div>
+        <div class="demo-notice">
+            DEMO MODE: Using sample data. For full functionality, use index.html with database connection.
+        </div>
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/ol@v8.2.0/dist/ol.js"></script>
+    <script>
+        // Sample data for demo
+        const sampleWells = [
+            {
+                id: 1,
+                name: "Yukon 5301 41-12T",
+                api_no: "33-053-03911",
+                well_status: "Active",
+                well_type: "Oil & Gas",
+                closest_city: "McKenzie County, ND",
+                county: "Williston",
+                lat_long: "48.082914, -103.622634",
+                oil_prod: 1000.0,
+                gas_prod: 1000.0
+            },
+            {
+                id: 2,
+                name: "Innoko 5301 43-12T",
+                api_no: "33-053-03937",
+                well_status: "Active",
+                well_type: "Oil & Gas",
+                closest_city: "McKenzie County, ND",
+                county: "Williston",
+                lat_long: "48.082730, -103.613628",
+                oil_prod: 94.0,
+                gas_prod: 179.0
+            },
+            {
+                id: 3,
+                name: "Magnum 3-36-25H",
+                api_no: "33-053-04069",
+                well_status: "Inactive",
+                well_type: "Oil & Gas",
+                closest_city: "McKenzie County, ND",
+                county: "Williston",
+                lat_long: "48.024944, -103.605166",
+                oil_prod: 0.0,
+                gas_prod: 0.0
+            }
+        ];
+
+        const sampleStimulated = [
+            {
+                api_no: "33-053-03911",
+                date_stimulated: "2013-08-31",
+                stimulated_formation: "Bakken",
+                stimulation_stages: 36,
+                volume: 100130,
+                volume_units: "Barrels",
+                type_treatment: "Sand Frac",
+                maximum_treatment_pressure_psi: 9294
+            }
+        ];
+
+        // Initialize demo map
+        class DemoWellsMap {
+            constructor() {
+                this.initMap();
+                this.addWellMarkers();
+            }
+
+            initMap() {
+                this.popup = document.createElement('div');
+                this.popup.className = 'popup';
+                
+                this.overlay = new ol.Overlay({
+                    element: this.popup,
+                    autoPan: {
+                        animation: {
+                            duration: 250,
+                        }
+                    },
+                });
+
+                this.vectorSource = new ol.source.Vector();
+
+                this.map = new ol.Map({
+                    target: 'map',
+                    layers: [
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM()
+                        }),
+                        new ol.layer.Vector({
+                            source: this.vectorSource,
+                            style: this.getMarkerStyle.bind(this)
+                        })
+                    ],
+                    overlays: [this.overlay],
+                    view: new ol.View({
+                        center: ol.proj.fromLonLat([-103.6, 48.05]),
+                        zoom: 10
+                    })
+                });
+
+                this.map.on('click', this.handleMapClick.bind(this));
+            }
+
+            getMarkerStyle(feature) {
+                const well = feature.get('wellData');
+                let color = '#3498db';
+                
+                if (well.well_status) {
+                    switch (well.well_status.toLowerCase()) {
+                        case 'active':
+                            color = '#27ae60';
+                            break;
+                        case 'inactive':
+                            color = '#e74c3c';
+                            break;
+                        case 'abandoned':
+                        case 'plugged and abandoned':
+                            color = '#95a5a6';
+                            break;
+                    }
+                }
+
+                return new ol.style.Style({
+                    image: new ol.style.Circle({
+                        radius: 8,
+                        fill: new ol.style.Fill({
+                            color: color
+                        }),
+                        stroke: new ol.style.Stroke({
+                            color: '#ffffff',
+                            width: 2
+                        })
+                    })
+                });
+            }
+
+            addWellMarkers() {
+                sampleWells.forEach(well => {
+                    const coords = this.parseCoordinates(well.lat_long);
+                    if (coords) {
+                        const feature = new ol.Feature({
+                            geometry: new ol.geom.Point(ol.proj.fromLonLat([coords.lng, coords.lat])),
+                            wellData: well
+                        });
+                        this.vectorSource.addFeature(feature);
+                    }
+                });
+            }
+
+            parseCoordinates(latLongStr) {
+                const parts = latLongStr.split(',');
+                if (parts.length === 2) {
+                    const lat = parseFloat(parts[0].trim());
+                    const lng = parseFloat(parts[1].trim());
+                    if (!isNaN(lat) && !isNaN(lng)) {
+                        return { lat, lng };
+                    }
+                }
+                return null;
+            }
+
+            handleMapClick(event) {
+                const feature = this.map.forEachFeatureAtPixel(event.pixel, (feature) => feature);
+                
+                if (feature) {
+                    const well = feature.get('wellData');
+                    this.showPopup(event.coordinate, well);
+                } else {
+                    this.hidePopup();
+                }
+            }
+
+            showPopup(coordinate, well) {
+                const stimulatedInfo = sampleStimulated.find(s => s.api_no === well.api_no);
+                
+                const statusClass = well.well_status ? 
+                    `status-${well.well_status.toLowerCase().replace(/\s+/g, '-')}` : '';
+
+                this.popup.innerHTML = `
+                    <h3>${well.name || 'Unknown Well'}</h3>
+                    
+                    <div class="popup-section">
+                        <h4>Well Information</h4>
+                        <div class="popup-row">
+                            <span class="popup-label">API No:</span>
+                            <span class="popup-value">${well.api_no || 'N/A'}</span>
+                        </div>
+                        <div class="popup-row">
+                            <span class="popup-label">Status:</span>
+                            <span class="popup-value ${statusClass}">${well.well_status || 'N/A'}</span>
+                        </div>
+                        <div class="popup-row">
+                            <span class="popup-label">Type:</span>
+                            <span class="popup-value">${well.well_type || 'N/A'}</span>
+                        </div>
+                        <div class="popup-row">
+                            <span class="popup-label">Location:</span>
+                            <span class="popup-value">${well.closest_city || 'N/A'}</span>
+                        </div>
+                    </div>
+
+                    <div class="popup-section">
+                        <h4>Production Data</h4>
+                        <div class="popup-row">
+                            <span class="popup-label">Oil Production:</span>
+                            <span class="popup-value">${well.oil_prod || 0} bbls</span>
+                        </div>
+                        <div class="popup-row">
+                            <span class="popup-label">Gas Production:</span>
+                            <span class="popup-value">${well.gas_prod || 0} mcf</span>
+                        </div>
+                    </div>
+
+                    ${stimulatedInfo ? `
+                        <div class="popup-section">
+                            <h4>Stimulation Data</h4>
+                            <div class="popup-row">
+                                <span class="popup-label">Formation:</span>
+                                <span class="popup-value">${stimulatedInfo.stimulated_formation}</span>
+                            </div>
+                            <div class="popup-row">
+                                <span class="popup-label">Stages:</span>
+                                <span class="popup-value">${stimulatedInfo.stimulation_stages}</span>
+                            </div>
+                            <div class="popup-row">
+                                <span class="popup-label">Volume:</span>
+                                <span class="popup-value">${stimulatedInfo.volume} ${stimulatedInfo.volume_units}</span>
+                            </div>
+                        </div>
+                    ` : ''}
+                `;
+                
+                this.overlay.setPosition(coordinate);
+            }
+
+            hidePopup() {
+                this.overlay.setPosition(undefined);
+            }
+        }
+
+        // Initialize demo
+        document.addEventListener('DOMContentLoaded', () => {
+            new DemoWellsMap();
+        });
+    </script>
+</body>
+</html>
